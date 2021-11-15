@@ -24,6 +24,10 @@ public class CourseService {
         return courseDao.findAll();
     }
 
+    public Course getCourseById(Long id){
+        return courseDao.findById(id);
+    }
+
     public Course addNewParticipant(Long courseId, Long personId){
         Person participant = personDao.findById(personId);
         Course course = courseDao.findById(courseId);

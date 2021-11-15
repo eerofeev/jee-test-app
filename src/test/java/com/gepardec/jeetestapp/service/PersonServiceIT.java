@@ -38,4 +38,5 @@ class PersonServiceIT {
         assertEquals(2, person.getCoursesParticipating().size());
         assertTrue(person.getCoursesTeached().isEmpty());
     }
+
 }

@@ -6,6 +6,7 @@
 package com.gepardec.jeetestapp.domain;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -28,7 +29,7 @@ public class Course {
     private Person teacher;
 
     @Column()
-    private LocalDateTime start;
+    private LocalDate start;
 
     @Column()
     private Integer duration;
@@ -72,11 +73,11 @@ public class Course {
         }
     }
 
-    public LocalDateTime getStart() {
+    public LocalDate getStart() {
         return start;
     }
 
-    public void setStart(LocalDateTime start) {
+    public void setStart(LocalDate start) {
         this.start = start;
     }
 

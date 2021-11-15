@@ -10,13 +10,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class CourseServiceTest {
@@ -29,7 +29,7 @@ class CourseServiceTest {
 
     @BeforeEach
     public void setup(){
-        Course course1 = Factory.createCourse("test", LocalDateTime.now(), 1);
+        Course course1 = Factory.createCourse("test", LocalDate.now(), 1);
         Person teacher = Factory.createPerson("Teacher", "1");
         Person participant = Factory.createPerson("Student", "1");
         course1.setTeacher(teacher);
