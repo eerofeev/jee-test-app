@@ -19,6 +19,7 @@ public class BaseDao<E> implements Dao<E> {
 
     @PostConstruct
     public void init() {
+        //noinspection unchecked
         this.persistentClass = (Class<E>) ((ParameterizedType) getClass()
                 .getGenericSuperclass()).getActualTypeArguments()[0];
     }

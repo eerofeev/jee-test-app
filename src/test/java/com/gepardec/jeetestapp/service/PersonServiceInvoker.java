@@ -17,8 +17,7 @@ public class PersonServiceInvoker extends BaseServiceInvoker {
     private PersonService service;
 
     public List<Person> getAllPersons() {
-        List<Person> allPersons = service.getAllPersons();
-        return allPersons;
+        return service.getAllPersons();
     }
 
     public Person getPersonById(Long id) {

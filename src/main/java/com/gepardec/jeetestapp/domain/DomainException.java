@@ -7,7 +7,7 @@ package com.gepardec.jeetestapp.domain;
 
 import javax.ejb.ApplicationException;
 
-@ApplicationException(rollback = true, inherited = true)
+@ApplicationException(rollback = true)
 public class DomainException extends RuntimeException{
 
     public DomainException() {

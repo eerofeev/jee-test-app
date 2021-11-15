@@ -22,6 +22,8 @@ create table course
         constraint course_pkey
             primary key,
     name varchar(255) not null,
+    start date,
+    duration int,
     teacher_id bigint not null
         constraint fk82lpl5bcnvcd5dm2suwud8n16
             references person

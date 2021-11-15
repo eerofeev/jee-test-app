@@ -7,7 +7,7 @@ package com.gepardec.jeetestapp.domain.dao;
 
 import java.util.List;
 
-public interface Dao<E extends Object> {
+public interface Dao<E> {
     E findById(Long id);
     List<E> findAll();
     E update(E entity);

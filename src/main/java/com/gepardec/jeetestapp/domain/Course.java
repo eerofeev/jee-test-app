@@ -6,6 +6,7 @@
 package com.gepardec.jeetestapp.domain;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,6 +26,12 @@ public class Course {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name= "teacher_id", nullable = false)
     private Person teacher;
+
+    @Column()
+    private LocalDateTime start;
+
+    @Column()
+    private Integer duration;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
@@ -63,6 +70,22 @@ public class Course {
         if(teacher != null) {
             teacher.addToCoursesTeached(this);
         }
+    }
+
+    public LocalDateTime getStart() {
+        return start;
+    }
+
+    public void setStart(LocalDateTime start) {
+        this.start = start;
+    }
+
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Integer duration) {
+        this.duration = duration;
     }
 
     public Set<Person> getParticipants() {

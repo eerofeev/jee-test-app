@@ -28,7 +28,22 @@ public class PersonService {
         return personDao.findById(id);
     }
 
-    public void addPerson(Person person) {
-        personDao.create(person);
+    public Person addPerson(String firstName, String lastName) {
+        Person person = new Person();
+        person.setFirstName(firstName);
+        person.setLastName(lastName);
+        return personDao.create(person);
+    }
+
+    public Person modifyPerson(Long personId, String firstName, String lastName) {
+        Person person = personDao.findById(personId);
+        person.setFirstName(firstName);
+        person.setLastName(lastName);
+        return personDao.update(person);
+    }
+
+    public void deletePerson(Long personId) {
+        Person person = personDao.findById(personId);
+        personDao.remove(person);
     }
 }
