@@ -4,6 +4,7 @@ import com.gepardec.jeetestapp.domain.Person;
 import com.gepardec.jeetestapp.service.PersonService;
 import com.gepardec.jeetestapp.ui.model.Mapper;
 import com.gepardec.jeetestapp.ui.model.PersonDto;
+import com.gepardec.jeetestapp.utils.Duration;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -24,6 +25,7 @@ public class GuiPersonService {
         return mapper.personToDto(personService.getAllPersons());
     }
 
+    @Duration
     public PersonDto findPersonById(Long id) {
         return mapper.personToDto(personService.getPersonById(id));
     }
