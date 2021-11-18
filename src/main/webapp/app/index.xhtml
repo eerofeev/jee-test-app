@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/templates/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:param name="title" value="Welcome to the Course Mangement App!"/>
+    <ui:param name="heading" value="Courses and Participants" />
+
+    <ui:define name="content">
+
+        <h:form>
+            <div class="p-shadow-1" style="margin: 10px; padding: 10px">
+                <h3>Courses</h3>
+                <p:dataTable var="course" value="#{coursesController.courses}">
+                    <p:column headerText="Name">
+                        <h:outputText value="#{course.name}" />
+                    </p:column>
+
+                    <p:column headerText="Teacher">
+                        <h:outputText value="#{course.teacher.firstName} #{course.teacher.lastName}" />
+                    </p:column>
+
+                    <p:column headerText="Begin">
+                        <h:outputText value="#{course.start}" />
+                    </p:column>
+
+                    <p:column headerText="End">
+                        <h:outputText value="#{course.end}" />
+                    </p:column>
+
+                    <p:column headerText="Number of participants">
+                        <h:outputText value="#{course.participants.size()}" />
+                    </p:column>
+                </p:dataTable>
+            </div>
+        </h:form>
+
+        <h:form>
+            <div class="p-shadow-1 card">
+                <h3>Persons</h3>
+                <p:dataTable var="person" value="#{personsController.persons}">
+
+                    <p:column headerText="First name">
+                        <h:outputText value="#{person.firstName}" />
+                    </p:column>
+
+                    <p:column headerText="Last name">
+                        <h:outputText value="#{person.lastName}" />
+                    </p:column>
+
+                    <p:column headerText="">
+                        <p:link value="edit" outcome="/app/person">
+                            <f:param name="id" value="#{person.id}" />
+                        </p:link>
+                    </p:column>
+
+                </p:dataTable>
+            </div>
+        </h:form>
+
+        <div class="margin-top">
+            <p:linkButton value="Create new person" outcome="/app/person"/>
+        </div>
+
+    </ui:define>
+</ui:composition>
+
+</html>
