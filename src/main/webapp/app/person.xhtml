@@ -33,13 +33,10 @@
                 </p:inplace>
 
                 <div class="margin-top" style="margin-top: 30px;">
-                    <p:commandButton value="Save" partialSubmit="true" process="@form" update="@form" action="#{personsEditController.save()}"/>
+                    <p:commandButton value="Save" partialSubmit="true"/>
                     <p:commandButton value="Delete"
                                      styleClass="ui-button-danger"
                                      partialSubmit="true"
-                                     process="@form"
-                                     update="@form"
-                                     action="#{personsEditController.delete()}"
                                      rendered="#{personsEditController.person.id != null}"
                                      style="margin-left: 10px"
                     >
@@ -48,7 +45,7 @@
                 </div>
 
                 <div class="margin-top" style="margin-top: 30px;">
-                    <p:commandButton value="Back" action="#{personsEditController.back()}" partialSubmit="true" process="@this" styleClass="ui-button-secondary"/>
+                    <p:commandButton value="Back" action="#{personsEditController.back()}" partialSubmit="true" process="@this" styleClass="mybutton"/>
                 </div>
 
                 <p:confirmPopup global="true">

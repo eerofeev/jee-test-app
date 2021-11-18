@@ -7,7 +7,6 @@ package com.gepardec.jeetestapp.domain;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,8 +23,7 @@ public class Course {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name= "teacher_id", nullable = false)
+    @Transient
     private Person teacher;
 
     @Column()
@@ -34,12 +32,7 @@ public class Course {
     @Column()
     private Integer duration;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "course_participation",
-            joinColumns = { @JoinColumn(name = "course_id")},
-            inverseJoinColumns = { @JoinColumn(name = "person_id") }
-    )
+    @Transient
     private Set<Person> participants = new HashSet<>();
 
     public Long getId() {
@@ -59,16 +52,16 @@ public class Course {
     }
 
     public void setTeacher(Person teacher) {
-        if(teacher == this.teacher) {
+        if (teacher == this.teacher) {
             return;
         }
         final Person oldTeacher = this.teacher;
 
         this.teacher = teacher;
-        if(oldTeacher != null) {
+        if (oldTeacher != null) {
             oldTeacher.removeFromCoursesTeached(this);
         }
-        if(teacher != null) {
+        if (teacher != null) {
             teacher.addToCoursesTeached(this);
         }
     }
@@ -79,14 +72,6 @@ public class Course {
 
     public void setStart(LocalDate start) {
         this.start = start;
-    }
-
-    public Integer getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Integer duration) {
-        this.duration = duration;
     }
 
     public Set<Person> getParticipants() {
@@ -109,5 +94,13 @@ public class Course {
 
     public void setParticipants(Set<Person> participants) {
         this.participants = participants;
+    }
+
+    public Integer getDuration() {
+        return 1;
+    }
+
+    public void setDuration(Integer duration) {
+        this.duration = duration;
     }
 }

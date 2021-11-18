@@ -25,10 +25,10 @@ public class Person {
     @Column(nullable = false)
     private String lastName;
 
-    @OneToMany(mappedBy = "teacher")
+    @Transient
     private Set<Course> coursesTeached = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "participants")
+    @Transient
     private Set<Course> coursesParticipating = new HashSet<>();
 
     public Long getId() {

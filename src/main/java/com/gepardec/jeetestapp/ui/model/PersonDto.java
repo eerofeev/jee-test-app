@@ -1,15 +1,12 @@
 package com.gepardec.jeetestapp.ui.model;
 
-import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
 public class PersonDto implements Serializable {
     private Long id;
 
-    @Pattern(regexp = "[a-zA-Z]+", message = "Firstname must not be empty and contain only letters")
     private String firstName;
 
-    @Pattern(regexp = "[a-zA-Z]+", message = "Lastname must not be empty and contain only letters")
     private String lastName;
 
     public Long getId() {

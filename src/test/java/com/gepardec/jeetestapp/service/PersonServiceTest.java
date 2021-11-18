@@ -21,29 +21,22 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class PersonServiceTest {
 
-    @Mock
+    // TODO: create mock
     private PersonDao personDao;
 
-    @InjectMocks
+    // TODO: use dao mock in personService
     private PersonService personService;
 
     @BeforeEach
     public void setup() {
         Person person = Factory.createPerson("Jack", "Johnson");
         person.setId(1L);
-        List<Person> persons = new ArrayList<>();
 
-        when(personDao.findById(person.getId())).thenReturn(person);
-        when(personDao.update(any(Person.class))).thenAnswer((Answer<Person>) invocationOnMock -> invocationOnMock.getArgument(0));
+        // TODO: configure mocked personDao
     }
 
     @Test
-    void getAllCourses() {
-        var person = personService.getPersonById(1L);
-        assertNotNull(person);
-        assertEquals("Jack", person.getFirstName());
-
-        Person modified = personService.modifyPerson(1L, "John", "Jackson");
-        assertEquals(modified.getLastName(), "Jackson");
+    void testFindPerson() {
+        //TODO: implement test: personService.getPersonById(1L) must return a person with the first name "Jack"
     }
 }
