@@ -12,6 +12,9 @@ import java.util.stream.Collectors;
 public class Mapper {
 
     public PersonDto personToDto(Person person) {
+        if(person == null){
+            return null;
+        }
         PersonDto dto = new PersonDto();
         dto.setId(person.getId());
         dto.setFirstName(person.getFirstName());
@@ -20,14 +23,23 @@ public class Mapper {
     }
 
     public List<PersonDto> personToDto(List<Person> persons) {
+        if(persons == null){
+            return null;
+        }
         return persons.stream().map(this::personToDto).collect(Collectors.toList());
     }
 
     public Set<PersonDto> personToDto(Set<Person> persons) {
+        if(persons == null){
+            return null;
+        }
         return persons.stream().map(this::personToDto).collect(Collectors.toSet());
     }
 
     public CourseDto courseToDto(Course course) {
+        if(course == null){
+            return null;
+        }
         CourseDto dto = new CourseDto();
         dto.setDuration(course.getDuration());
         dto.setTeacher(personToDto(course.getTeacher()));
@@ -39,14 +51,23 @@ public class Mapper {
     }
 
     public List<CourseDto> courseToDto(List<Course> courses) {
+        if(courses == null){
+            return null;
+        }
         return courses.stream().map(this::courseToDto).collect(Collectors.toList());
     }
 
     public Set<CourseDto> courseToDto(Set<Course> courses) {
+        if(courses == null){
+            return null;
+        }
         return courses.stream().map(this::courseToDto).collect(Collectors.toSet());
     }
 
     public Person dtoToPerson(PersonDto dto) {
+        if(dto == null){
+            return null;
+        }
         Person person = new Person();
         person.setId(dto.getId());
         person.setFirstName(dto.getFirstName());
@@ -55,14 +76,23 @@ public class Mapper {
     }
 
     public List<Person> dtoToPerson(List<PersonDto> dtos) {
+        if(dtos == null){
+            return null;
+        }
         return dtos.stream().map(this::dtoToPerson).collect(Collectors.toList());
     }
 
     public Set<Person> dtoToPerson(Set<PersonDto> dtos) {
+        if(dtos == null){
+            return null;
+        }
         return dtos.stream().map(this::dtoToPerson).collect(Collectors.toSet());
     }
 
     public Course dtoToCourse(CourseDto dto) {
+        if(dto == null){
+            return null;
+        }
         Course course = new Course();
         course.setDuration(dto.getDuration());
         course.setTeacher(dtoToPerson(dto.getTeacher()));
@@ -74,10 +104,16 @@ public class Mapper {
     }
 
     public List<Course> dtoToCourse(List<CourseDto> dtos) {
+        if(dtos == null){
+            return null;
+        }
         return dtos.stream().map(this::dtoToCourse).collect(Collectors.toList());
     }
 
     public Set<Course> dtoToCourse(Set<CourseDto> dtos) {
+        if(dtos == null){
+            return null;
+        }
         return dtos.stream().map(this::dtoToCourse).collect(Collectors.toSet());
     }
 
