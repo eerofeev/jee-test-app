@@ -2,7 +2,7 @@
 
 ## Technical hints
 
-###Prepare Postgres DB
+### Prepare Postgres DB
 
 ```
 docker run -it --rm -p 5432:5432 -e POSTGRES_DB=courses -e POSTGRES_USER=courses -e POSTGRES_PASSWORD=courses postgres:12.5
@@ -12,7 +12,7 @@ docker run -it --rm -p 5432:5432 -e POSTGRES_DB=courses -e POSTGRES_USER=courses
 mvn flyway:migrate
 ```
 
-###Configure Wildfly
+### Configure Wildfly
 
 Extract `src/test/resources/misc/wildfly/postgres_driver.zip` into `$WILDFLY_HOME/modules`
 
@@ -42,20 +42,20 @@ Set Property
 cheetunit.enabled=true
 ```
 
-##Dojo tasks
+## Dojo tasks
 
-###Generel
+### Generel
 ****
-####Preparation
+#### Preparation
 
 Build and deploy application. You must see the start page with two tables: courses and persons.
 
 
 
 #
-###JPA
+### JPA
 ****
-####Dependencies
+#### Dependencies
 
  - The fields `Course.teacher` and `Person.coursesTeached` are marked transient. Repair them to implement bidirectional Many-To-One / One-To-Many relationship.
 One teacher may have many courses. But one course has always only one teacher. This relationship is implemented via DB-Column `course.teacher_id`
@@ -67,9 +67,9 @@ Test result: the columns "Teacher" and "Number of participants" must be filled
 
 
 #
-###JSF
+### JSF
 ****
-####CRUD
+#### CRUD
 
 - Implement `PersonEditController.init` method according comments
 - Extend button Save on the page "person" such that PersonEditController.save action will be called
@@ -84,15 +84,15 @@ Test functionality in the application by performing corresponding actions and co
 
 
 #
-###Validation
+### Validation
 ****
-####Bean Validation
+#### Bean Validation
 Implement Validation on `PersonDto`, such that only letters in firstname and lastname are accepted
 
 
 
 #
-###Debugging
+### Debugging
 ****
 
 As it can be seen on the start page the ending date of each course is always the next day after the beginning date.
@@ -101,9 +101,9 @@ But DB has correct duration values. Debug application to repair the problem.
 
 
 #
-###CDI
+### CDI
 ****
-####Duration logger
+#### Duration logger
 
 Make an interceptor for business methods that logs out the method name and duration. Example
 ```
@@ -119,9 +119,9 @@ public class GuiPersonService {
 
 
 #
-###JSF2
+### JSF2
 ****
-####Search
+#### Search
 
 Implement a page to search courses by participant name:
 - Create a page `/app/search?by=<search string>`
@@ -132,7 +132,7 @@ Implement a page to search courses by participant name:
 
 
 #
-###Unit-Testing with Mockito
+### Unit-Testing with Mockito
 ****
 
 Implement a Mockito test in `PersonServiceTest` using hints in comments.
