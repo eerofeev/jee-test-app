@@ -57,8 +57,10 @@ Build and deploy application. You must see the start page with two tables: cours
 ****
 ####Dependencies
 
- - The fields `Course.teacher` and `Person.coursesTeached` are marked transient. Repair them to implement Many-To-One / One-To-Many dependency.
- - The fields `Course.participants` and `Person.coursesParticipating` are marked transient. Repair them to implement Many-To-Many dependency. 
+ - The fields `Course.teacher` and `Person.coursesTeached` are marked transient. Repair them to implement bidirectional Many-To-One / One-To-Many relationship.
+One teacher may have many courses. But one course has always only one teacher. This relationship is implemented via DB-Column `course.teacher_id`
+ - The fields `Course.participants` and `Person.coursesParticipating` are marked transient. Repair them to implement bidirectional Many-To-Many relationship.
+One course may have many participants. And one person may participate on multiple courses. This relationship is implemented vie DB-Table `course_participation(course_id, person_id)`
 
 Test result: the columns "Teacher" and "Number of participants" must be filled
 
